@@ -320,9 +320,20 @@ td.expense {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  opacity: 0;
-  visibility: hidden;
   z-index: 999;
+}
+
+@media (max-width: 980px) {
+  .modal-overlay {
+    bottom: 0;
+    -webkit-box-align: end;
+        -ms-flex-align: end;
+            align-items: flex-end;
+  }
+  .modal-overlay .modal {
+    width: 100%;
+    border-radius: 30px 30px 0 0;
+  }
 }
 
 .modal-overlay.active {
