@@ -99,10 +99,12 @@ const DOM = {
     const amount = Utils.formatCurrency(transaction.amount)
 
     const html = `
-    <td class="description">${transaction.description}</td>
-    <td class="${CSSclass}">${amount}</td>
+    <td class="info-transaction">
+      <p class="description">${transaction.description}</p>
+      <p class="${CSSclass}">${amount}</p>
+    </td>
     <td class="date">${transaction.date}</td>
-    <td><img onclick="Transaction.remove(${index})" src="./assets/minus.svg" alt="Remover transação" /></td>
+    <td class="delete"><span onclick="Transaction.remove(${index})" class="material-icons">delete_outline</span></td>
     `
 
     return html
@@ -117,6 +119,29 @@ const DOM = {
   },
   clearTransactions() {
     DOM.transactionContainer.innerHTML = ''
+  },
+  contentTotal() {
+    const hiddenValue = document.querySelector('#totalDisplay').innerHTML === 'R$ ---'
+    const icon = document.querySelector('.value-total span')
+
+    const incomesValue = document.querySelector('#incomeDisplay')
+    const expensesValue = document.querySelector('#expenseDisplay')
+
+    // const itensIncome = document.querySelectorAll('.income')
+
+    if(hiddenValue) {
+      document.querySelector('#totalDisplay').innerHTML = Utils.formatCurrency(Transaction.total())
+      incomesValue.innerHTML = Utils.formatCurrency(Transaction.incomes())
+      expensesValue.innerHTML = Utils.formatCurrency(Transaction.expenses())
+
+      icon.innerHTML = 'visibility'
+    } else {
+      document.querySelector('#totalDisplay').innerHTML = 'R$ ---'
+      incomesValue.innerHTML = 'R$ ---'
+      expensesValue.innerHTML = 'R$ ---'
+      
+      icon.innerHTML = 'visibility_off'
+    }
   }
 }
 

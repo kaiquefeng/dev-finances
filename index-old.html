@@ -20,6 +20,26 @@
             <section id="balance">
                 <h2 class="sr-only">Balanço</h2>
 
+                <div class="card">
+                    <h3>
+                        <span>
+                            Entradas
+                        </span>
+                        <img src="./assets/income.svg" alt="Image de entradas">
+                    </h3>
+                    <p id="incomeDisplay">R$ 0,00</p>
+                </div>
+
+                <div class="card">
+                    <h3>
+                        <span>
+                            Saídas
+                        </span>
+                        <img src="./assets/expense.svg" alt="Image de saídas">
+                    </h3>
+                    <p id="expenseDisplay">R$ 0,00</p>
+                </div>
+
                 <div class="card total">
                     <h3>
                         <span>
@@ -27,23 +47,7 @@
                         </span>
                         <img src="./assets/total.svg" alt="Image de total">
                     </h3>
-                    <div class="value-total">
-                        <p id="totalDisplay">R$ 0,00</p>
-                        <span class="material-icons" onclick="DOM.contentTotal()">
-                            visibility
-                        </span>
-                    </div>
-                </div>
-
-                <div class="card-transactions">
-                    <div class="mini-card">
-                        <span class="material-icons incomes">trending_up</span>
-                        <p id="incomeDisplay">R$ 0,00</p>
-                    </div>
-                    <div class="mini-card">
-                        <span class="material-icons expenses">trending_down</span>
-                        <p id="expenseDisplay">R$ 0,00</p>
-                    </div>
+                    <p id="totalDisplay">R$ 0,00</p>
                 </div>
                 
             </section>
@@ -51,7 +55,19 @@
             <section id="transaction">
                 <h2 class="sr-only">Transações</h2>
 
+                <a href="#" 
+                onclick="isModal()"
+                class="button new">+ Nova Transação</a>
+                
                 <table id="data-table">
+                    <thead>
+                        <tr>
+                            <th>Descrição</th>
+                            <th>Valor</th>
+                            <th>Data</th>
+                            <th></th>
+                        </tr>
+                    </thead>
                     <tbody>
                     </tbody>
                 </table>
@@ -114,8 +130,8 @@
 
         <div class="new-transaction">
             <ul class="list-menu">
-                <li><a href="/"><span class="material-icons">home</span></a></li>
-                <li><a href="transactions.html"><span class="material-icons">receipt_long</span></a></li>
+                <li><span class="material-icons">home</span></li>
+                <li><span class="material-icons">receipt_long</span></li>
                 <li class="add" onclick="isModal()"><span class="material-icons"> add</span></li>
             </ul>
         </div>

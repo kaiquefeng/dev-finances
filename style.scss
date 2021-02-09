@@ -1,9 +1,11 @@
 /* Global ===================== */
 :root {
     --dark-blue: #363f5f;
+    --light-dark: #7e8ab8;
     --green: #49AA26;
     --light-green: #3dd705;
     --red: #e92929;
+    --light-white: #f0f2f5
 
 }
 
@@ -18,7 +20,7 @@ html {
 }
 
 body {
-    background: #f0f2f5;
+    background: var(--light-white);
     font-family:'Poppins', sans-serif
 }
 
@@ -121,6 +123,47 @@ header {
         color:white;
         margin-top:0;
     }
+
+    .card-transactions {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 30px;
+
+        .mini-card {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            width: 50%;
+            min-height: 190px;
+            margin-right: 10px;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+
+            & + .mini-card {
+                margin-left: 10px;
+                margin-right: 0;
+            }
+
+            span {
+                font-size: 32px;
+                margin-bottom: 30px;
+
+                &.incomes {
+                    color: var(--green);
+                }
+                &.expenses {
+                    color: #e92929;
+                }
+            }
+            p {
+                color: var(--light-dark);
+            }
+        }
+    }
 }
 
 
@@ -147,37 +190,81 @@ header {
         line-height: 3rem;
     
         margin-top: 1rem;
+        min-width: 180px;
     }
 }
 
 .card.total {
     background: var(--green);
     color: white;
+
+    .value-total {
+        display: flex;
+        align-items: center;
+
+        span {
+            margin: 1rem 0 0 1rem;
+            cursor: pointer;
+        }
+    }
 }
 
 /* Table ===================== */
 #transaction {
     display: block;
     width: 100%;
-    overflow-x: auto;
+
+    background: #fff;
+    border-radius: 10px;
 
     #data-table {
         width: 100%;
         border-spacing: 0 0.5rem;
         color: #969cb3;
 
-        table {
-            thead tr th:first-child, 
-            table tbody tr td:first-child
-            {
-                border-radius: 0.25rem 0 0 0.25rem;
+        tbody {
+            tr td {
+                padding: 1rem;
+
+                &.info-transaction {
+                    position: relative;
+
+                    .income {
+                        color: #12a454;
+                    }
+                    .expense {
+                        color: #e92929;
+                    }
+                }
+                &.delete {
+                   span {
+                       font-size: 18px;
+                       color: #e92929;
+                   } 
+                }
             }
-            thead tr th:last-child, 
-            table tbody tr td:last-child{
-                border-radius: 0 0.25rem 0.25rem 0;
-            }
-            
         }
+    }
+
+    .incomes-expenses {
+        padding: 20px;
+        border-top: 1px solid #c4cae29f;
+
+        p {
+            color: var(--light-dark);
+
+            #incomeDisplay {
+                color: #12a454;
+            }
+            #expenseDisplay {
+                color: #e92929;
+            }
+        }        
+    }
+
+    @media (max-width: 980px) {
+        
+
     }
 }
 
@@ -190,17 +277,11 @@ table thead th {
     text-align: left;
 }
 
-table tbody tr {
-    opacity: 0.7
-}
-
-table tbody tr:hover {
-    opacity: 1
-}
-
-table tbody td {
-    background:white;
-    padding: 1rem 2rem;
+table tbody {
+    td {
+        background:white;
+        padding: 1rem 2rem;
+    }
 }
 
 td.description {
@@ -241,7 +322,7 @@ td.expense {
 }
 
 .modal {
-    background: #F0F2f5;
+    background: var(--light-white);
     padding: 2.4rem;
     max-width: 500px;
     width: 90%;
@@ -286,6 +367,60 @@ input {
     width: 48%;
 }
 
+.new-transaction {
+    background:#fff;
+    border-radius: 20px 20px 0 0;
+    box-shadow: 0 -25px 57px -23px #7e8798;
+    width: 100vw;
+    height: 50px;
+    z-index: 1;
+
+    position: fixed;
+    bottom: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .list-menu {
+        list-style: none;
+        width: 80%;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        li {
+            margin: 0 20px;
+
+            span {
+                color: var(--light-dark);
+            }
+        }
+
+        .add {
+            background: var(--green);
+            padding: 10px;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: -20px;
+
+            cursor: pointer;
+
+            span {
+                color: var(--light-white);
+            }
+        }
+    }
+
+    
+}
+
 
 /* Footer ===================== */
 footer {
@@ -305,7 +440,7 @@ footer {
 
     #balance {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(2, 1fr);
         gap: 2rem;
     }
 }
