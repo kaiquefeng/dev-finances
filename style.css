@@ -336,6 +336,9 @@ td.expense {
     width: 100%;
     border-radius: 30px 30px 0 0;
   }
+  .modal-overlay .modal form input {
+    font-size: 100%;
+  }
 }
 
 .modal-overlay.active {
